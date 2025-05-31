@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Karim Hanna's Website</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="color-1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -277,44 +277,44 @@
 
               </div>
               <div class="contact-follow-up">
-                <h3 class="contact-title padd-15"> Send me an Email for further enquiries</h3>
-                <h4 class="contact-sub-title padd-15"> Quick Response Guaranteed </h4>
-                <div class="row">
-                    <div class="contact-form padd-15">
-                        <div class="row">
-                            <div class="form-item col-6 padd-15">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="form-item col-6 padd-15">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-item col-12 padd-15">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Subject">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-item col-12 padd-15">
-                                <div class="form-group">
-                                    <textarea name="" class="form-control" id="" placeholder="Message"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-item col-12 padd-15">
-                               <button type="submit" class="btn"> Send A Message</button>
-                            </div>
-                        </div>
+                <h3 class="contact-title padd-15">Send me an Email for further enquiries</h3>
+                <h4 class="contact-sub-title padd-15">Quick Response Guaranteed</h4>
+                <form action="https://formspree.io/f/xdkznbkr" method="POST" class="contact-form padd-15" name="contact-form">
+                  <div class="row">
+                    <div class="form-item col-6 padd-15">
+                      <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Name" required>
+                      </div>
                     </div>
-                </div>
+                    <div class="form-item col-6 padd-15">
+                      <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="form-item col-12 padd-15">
+                      <div class="form-group">
+                        <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="form-item col-12 padd-15">
+                      <div class="form-group">
+                        <textarea name="message" class="form-control" placeholder="Message" rows="6" required></textarea>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="form-item col-12 padd-15 text-center">
+                      <button type="submit" class="btn">Send A Message</button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </section>
@@ -326,12 +326,38 @@
 <script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<!-- Typed.js animation for typing effect -->
 <script>
-  var typed = new Typed(".typing", {
-    strings: ["A Web Developer", "A Scuba Diver", "An archer", "An Investor"],
-    typeSpeed: 100,
-    backSpeed: 60,
-    loop: true
+  document.addEventListener("DOMContentLoaded", function () {
+    new Typed(".typing", {
+      strings: ["A Web Developer", "A Scuba Diver", "An Archer", "An Investor"],
+      typeSpeed: 100,
+      backSpeed: 60,
+      loop: true
+    });
+  });
+</script>
+
+<!-- Form submission handler with confirmation -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    if (form) {
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const res = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        });
+        if (res.ok) {
+          alert("Thanks! Your message was sent.");
+          form.reset();
+        } else {
+          alert("Oops! There was a problem sending your message.");
+        }
+      });
+    }
   });
 </script>
 </body>
