@@ -923,3 +923,42 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-color);
   transition: color 0.3s ease;
 }
+
+
+.timeline {
+  position: relative;
+  margin-left: 25px;
+  padding-left: 20px;
+  border-left: 3px solid var(--bg-black-50);
+}
+
+.timeline .timeline-progress {
+  height: 0;
+  transition: height 1s ease-in-out;
+}
+
+.timeline.scrolled .timeline-progress {
+  height: 100%;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -9px;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border: 3px solid var(--bg-black-50);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-content {
+  padding-left: 20px;
+  z-index: 1;
+}
